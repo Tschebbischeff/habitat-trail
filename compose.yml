@@ -62,8 +62,13 @@ services:
       - path: ${ENV_DIR}/yamtrack.env
         required: false
     environment:
-      REDIS_URL: "redis://${APP_NAME_HOST}_redis:6379"
-      REDIS_PREFIX: "yamtrack:"
+      # REDIS_URL: "redis://${APP_NAME_HOST}_redis:6379"
+      REDIS_HOST: "${APP_NAME_HOST}_redis"
+      REDIS_PORT: "6379"
+      REDIS_DB: "2"
+      REDIS_USER: "default"
+      REDIS_PASSWORD_FILE: '/run/secrets/REDIS_PASSWORD'
+      # REDIS_PREFIX: "yamtrack:"
       URLS: "https://yamtrack.${APP_HOST}"
       SECRET_FILE: "/run/secrets/YAMTRACK_DJANGO_SECRET"
       SOCIAL_PROVIDERS: "allauth.socialaccount.providers.openid_connect"
