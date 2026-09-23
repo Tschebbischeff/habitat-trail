@@ -64,7 +64,7 @@ services:
     environment:
       REDIS_URL: "redis://${APP_NAME_HOST}_redis:6379"
       REDIS_PREFIX: "yamtrack:"
-      URLS: "yamtrack.${APP_HOST}"
+      URLS: "https://yamtrack.${APP_HOST}"
       SECRET_FILE: "/run/secrets/YAMTRACK_DJANGO_SECRET"
       SOCIAL_PROVIDERS: "allauth.socialaccount.providers.openid_connect"
       SOCIALACCOUNT_PROVIDERS: "" # Set by entrypoint script from YAMTRACK_OAUTH_*_FILE credentials
