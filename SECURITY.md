@@ -1,4 +1,4 @@
-# Habitat Module Template Security Policy
+# Habitat: Trail Security Policy
 
 ## Supported Versions
 

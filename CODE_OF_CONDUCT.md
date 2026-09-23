@@ -1,4 +1,4 @@
-# Code of Conduct - Habitat: Module Template
+# Code of Conduct - Habitat: Trail
 
 ## Our Pledge
 

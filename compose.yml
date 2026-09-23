@@ -19,9 +19,9 @@ volumes:
 
 services:
 
-  habitat-config-{{ cookiecutter.module_slug }}:
+  habitat-config-trail:
     image: tschebbischeff/habitat-config:latest
-    container_name: ${APP_NAME_HOST}_habitat-config-{{ cookiecutter.module_slug }}
+    container_name: ${APP_NAME_HOST}_habitat-config-trail
     restart: no
     env_file:
       - ./.env
@@ -30,7 +30,7 @@ services:
       - path: ${ENV_DIR}/habitat-config.env
         required: false
     environment:
-      MODULE_NAME: "{{ cookiecutter.module_slug }}"
+      MODULE_NAME: "trail"
     networks:
       internal:
     volumes:
@@ -67,5 +67,5 @@ services:
     #   retries: 5
     #   start_period: 10s
     depends_on:
-      habitat-config-{{ cookiecutter.module_slug }}:
+      habitat-config-trail:
         condition: service_completed_successfully
