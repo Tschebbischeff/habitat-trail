@@ -4,6 +4,9 @@
 # None
 
 # Override for environment variables mountable as secrets via _FILE suffix
+[ -z "$SECRET" ] && [ -f "$SECRET_FILE" ] && \
+  export SECRET="$(cat "$SECRET_FILE")" && \
+  unset YAMTRACK_OAUTH_CLIENT_ID_FILE
 [ -z "$YAMTRACK_OAUTH_CLIENT_ID" ] && [ -f "$YAMTRACK_OAUTH_CLIENT_ID_FILE" ] && \
   YAMTRACK_OAUTH_CLIENT_ID="$(cat "$YAMTRACK_OAUTH_CLIENT_ID_FILE")" && \
   unset YAMTRACK_OAUTH_CLIENT_ID_FILE
