@@ -1,0 +1,74 @@
+name: Initialize Repository from Cookiecutter Template
+run-name: Cookiecutter template initialization by @${{ github.actor }}
+on:
+  push:
+    branches: [ main, master ]
+jobs:
+  cookiecutter:
+    name: Cookiecutter Initialization
+    permissions:
+      contents: write
+    if: ${{ github.run_number == 1 && github.event.repository.is_template == false }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: true
+      - name: Compute variables
+        id: vars
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          MODULE_NAME_SHORT="${REPO_NAME#habitat-}"
+          MODULE_NAME_LABEL="${MODULE_NAME_SHORT//[-_]/ }"
+          MODULE_NAME_LABEL="$(echo "$MODULE_NAME_LABEL" | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2); print}')"
+          AUTHOR_EMAIL="${{ github.event.pusher.email }}"
+          if [ -z "$AUTHOR_EMAIL" ] || [ "$AUTHOR_EMAIL" == "null" ]; then
+            AUTHOR_EMAIL="${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+          fi
+          AUTHOR_EMAIL_COC="$AUTHOR_EMAIL"
+          AUTHOR_EMAIL_SECURITY="$AUTHOR_EMAIL"
+          if [ "${{ github.actor }}" == "Tschebbischeff" ]; then
+            AUTHOR_EMAIL="tschebbischeff@habitat.tschebbischeff.dev"
+            AUTHOR_EMAIL_COC="topic+code-of-conduct@habitat.tschebbischeff.dev"
+            AUTHOR_EMAIL_SECURITY="topic+security@habitat.tschebbischeff.dev"
+          fi
+          AUTHOR_EMAIL_DOMAIN="${AUTHOR_EMAIL#*@}"
+          echo "is_cc_template=$([ -f "./cookiecutter.json" ] && echo "true" || echo "false")" >> $GITHUB_OUTPUT
+          echo "project_slug=$REPO_NAME" >> $GITHUB_OUTPUT
+          echo "module_slug=$MODULE_NAME_SHORT" >> $GITHUB_OUTPUT
+          echo "module_name=$MODULE_NAME_LABEL" >> $GITHUB_OUTPUT
+          echo "author_email_domain=$AUTHOR_EMAIL_DOMAIN" >> $GITHUB_OUTPUT
+          echo "author_email_coc=$AUTHOR_EMAIL_COC" >> $GITHUB_OUTPUT
+          echo "author_email_security=$AUTHOR_EMAIL_SECURITY" >> $GITHUB_OUTPUT
+      - name: Run cookiecutter
+        if: ${{ steps.vars.outputs.is_cc_template == 'true' }}
+        uses: andrewthetechie/gha-cookiecutter@v1.3.2
+        with:
+          template: '.'
+          cookiecutterValues: |
+            {
+              "module_name": "${{ steps.vars.outputs.module_name }}",
+              "module_slug": "${{ steps.vars.outputs.module_slug }}",
+              "author_name": "${{ github.repository_owner }}",
+              "author_profile_name": "${{ github.repository_owner }}",
+              "project_slug": "${{ steps.vars.outputs.project_slug }}",
+              "mail_domain": "${{ steps.vars.outputs.author_email_domain }}",
+              "mail_coc_enforcement": "${{ steps.vars.outputs.author_email_coc }}",
+              "mail_security": "${{ steps.vars.outputs.author_email_security }}"
+            }
+      - name: Finalize project structure
+        if: ${{ steps.vars.outputs.is_cc_template == 'true' }}
+        run: |
+          sudo chown -R $(id -u):$(id -g) "./${{ steps.vars.outputs.project_slug }}"
+          mv ./.git "./${{ steps.vars.outputs.project_slug }}/"
+          find . -mindepth 1 -maxdepth 1 ! -name "${{ steps.vars.outputs.project_slug }}" -exec rm -rf {} +
+          find "./${{ steps.vars.outputs.project_slug }}" -mindepth 1 -maxdepth 1 -exec mv {} . \;
+          rm -rf "./${{ steps.vars.outputs.project_slug }}"
+          ls -la "$(pwd)"
+      - name: Commit and push generated files
+        if: ${{ steps.vars.outputs.is_cc_template == 'true' }}
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: 'initializes repository with cookiecutter'
+          push_options: '--force'

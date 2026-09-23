@@ -1,0 +1,19 @@
+{
+    "_extensions": ["jinja_filters.UrlQuoteExtension"],
+    "module_name": "Module Template",
+    "module_slug": "{{ cookiecutter.module_name.lower().replace(' ', '-') }}",
+    "author_name": "Tschebbischeff",
+    "author_profile_name": "{{ cookiecutter.author_name.replace(' ', '-') }}",
+    "author_profile_url": "https://github.com/{{ cookiecutter.author_profile_name }}",
+    "project_name": "Habitat: {{ cookiecutter.module_name }}",
+    "project_slug": "habitat-{{ cookiecutter.module_slug }}",
+    "project_url": "https://github.com/{{ cookiecutter.author_profile_name }}/{{ cookiecutter.project_slug }}",
+    "__project_url_raw_enc": "{{ (cookiecutter.project_url.replace('https://github.com', 'https://raw.githubusercontent.com')) | urlquote }}",
+    "docs_url": "{{ cookiecutter.project_url }}",
+    "issue_tracker_url": "{{ cookiecutter.project_url }}/issues",
+    "issue_tracker_new_url": "{{ cookiecutter.issue_tracker_url }}/new",
+    "bugtracker_url": "{{ cookiecutter.project_url }}/issues?q=label%3Abug",
+    "mail_domain": "habitat.{{ cookiecutter.author_profile_name.lower() }}.dev",
+    "mail_coc_enforcement": "topic+code-of-conduct@{{ cookiecutter.mail_domain }}",
+    "mail_security": "topic+security@{{ cookiecutter.mail_domain }}"
+}
