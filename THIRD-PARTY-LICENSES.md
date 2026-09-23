@@ -24,4 +24,11 @@ The date used in the copyright notices in this file represents the year indicate
 * **Copyright Notice:** <COPYRIGHT_NOTICE>
 -->
 
-*This repository currently does not use any third-party software directly.*
+## Yamtrack
+
+* **Project:** https://fuzzygrim.github.io/Yamtrack
+* **Version:** Latest
+* **In use since:** September 2026
+* **Source Code:** https://github.com/FuzzyGrim/Yamtrack
+* **License:** [AGPL-3.0](https://github.com/FuzzyGrim/Yamtrack/blob/dev/LICENSE)
+* **Copyright Notice:** Copyright (c) 2022 FuzzyGrim

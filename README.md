@@ -18,17 +18,25 @@ You can check out all officially available modules [here](https://github.com/Tsc
 
 ## Module Features
 
-![TODO](https://img.shields.io/badge/TODO-Coming_Soon_(TM)-red?style=flat)
+[![Yamtrack](https://img.shields.io/badge/Yamtrack-_?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZWxsaXBzZSBjeD0iMjU3LjkiIGN5PSIyNjIuMiIgcng9IjIyMS44IiByeT0iMjA2LjciIHN0eWxlPSJmaWxsOiNmZmYiLz48cGF0aCBkPSJNMjMyNSA1MTE0Yy0xNi0yLTY4LTktMTE1LTE1LTI0OC0zMi01MzUtMTIwLTc2OC0yMzQtMjc3LTEzNS00NzUtMjc3LTY5My00OTQtNDA5LTQxMC02NjAtOTE2LTczNC0xNDg0LTIwLTE1NS0yMC00NzQgMC02MzcgNzItNTc5IDMyMC0xMDg3IDczNC0xNTAwIDMyMS0zMjEgNjkzLTU0MCAxMTE2LTY1OCAyNjAtNzMgNDY4LTk3IDc3MC04OSAzODEgMTAgNjk1IDg1IDEwMzAgMjQ2IDQzOSAyMTIgODExIDU0NCAxMDcwIDk1NiAxOTIgMzA1IDMyOSA2OTUgMzcxIDEwNjEgMjAgMTY3IDE0IDUwMC0xMSA2NjQtODMgNTQ3LTMzMiAxMDQ2LTcxNSAxNDMxLTY5IDY5LTE2MCAxNTMtMjAzIDE4OC0yODEgMjI2LTY0NCA0MDktOTg3IDQ5Ni0yMTAgNTQtMzIwIDY3LTU4NSA3MC0xMzcgMi0yNjMgMS0yODAtMW0xNzE4LTExNzhjODctNDIgMTE5LTEyNiA3OS0yMDYtMTktMzktMjItMzktMTE2LTIwLTExMCAyMi0zMTQtMTMtNDcyLTgwLTUxNC0yMjAtOTg0LTc5OC0xMjEzLTE0OTEtNzEtMjE2LTk0LTMzNy0xMTAtNTgwLTE0LTIwNi0yNi0yMTktMjA5LTIxOS03NSAwLTEwNC01LTE1NC0yNS0zNC0xNC02Mi0yNS02My0yNXMtMTAgMTgtMjAgMzlsLTE3IDQwIDQyIDYzYzExNiAxNzQgMjE0IDQ1MiAyNzEgNzczIDMwIDE3MCAzOCA0ODcgMTUgNjQzLTUwIDM0Mi0xOTMgNTg3LTM4NiA2NjQtNDUgMTktNzUgMjMtMTcwIDIzLTExMCAwLTExOC0xLTE4MS0zMy03Mi0zNS0xODAtMTM4LTIzNC0yMjQtMTctMjctMzItNDgtMzUtNDhzLTI0IDE4LTQ1IDQwYy0zOSA0MC00MCA0My0zOSAxMDkgMCA1NyA2IDgwIDMzIDEzNiA2MiAxMjUgMTk5IDIzNCAzNTAgMjc3IDg5IDI2IDI2MiAyNyAzNTEgNCAzMjgtODggNTU0LTQ1MSA2MjAtOTk2IDYtNTIgMTMtOTYgMTUtOThzMjAgMjggMzkgNjdjNDYgOTAgOTEgMTYyIDE3OSAyODEgMzA3IDQxNyA2OTkgNzQ3IDEwMjYgODY0IDE3MSA2MSAzNDYgNzAgNDQ0IDIyIiBzdHlsZT0iZmlsbDojMjYyYTJkIiB0cmFuc2Zvcm09Im1hdHJpeCguMSAwIDAgLS4xIDAgNTEyKSIvPjwvc3ZnPg==&logoColor=000000&color=gray&labelColor=gray)](https://fuzzygrim.github.io/Yamtrack)
+
+ - **Media Tracking** \
+ Track movies, tv shows, animea, manga, games, books, comics and board games with Yamtrack.
 
 ### Planned
 
+<!--
 ![No Features Planned](https://img.shields.io/badge/_-No_Planned_Features-green?style=flat)
+-->
+ - **Automatic Admin Privileges** \
+ Automatically sync user privileges with LLDAP app groups.
 
 ## Getting Started
 
 ### Requirements
 
  - [![Habitat-Module: Path](https://img.shields.io/badge/Habitat--Module-Path-_?style=flat&color=gray&labelColor=gray)](https://github.com/Tschebbischeff/habitat-path)
+ - [![Habitat-Module: Scent](https://img.shields.io/badge/Habitat--Module-Scent-_?style=flat&color=gray&labelColor=gray)](https://github.com/Tschebbischeff/habitat-scent)
 
 ### Configuration
 
@@ -95,19 +103,15 @@ SECRETS_DIR="/run/secrets"
 > [!TIP]
 > Some environment variables are used commonly throughout all modules, you can check the list [here](https://github.com/Tschebbischeff/habitat#environment-variables-for-modules).
 
-*This module does not require any additional environment variables.*
-
-<!--
 | Name | Description | Example | Default |
 | :-- | :-- | :-- | :-- |
-| `EXAMPLE` | An example description. | `some-value` | *Empty* |
--->
+| `YAMTRACK_NSFW` | Whether or not to include adult content in any Yamtrack media searches. | `True` | `False` |
+| `YAMTRACK_BACKUP_SCHEDULE` | A cron schedule in the form of `M H DoM MoY DoW`, determining when the Yamtrack `/yamtrack/db` directory is backed up to `/backup`. | `30 23 * * *` | `30 1 * * *` |
+| `YAMTRACK_BACKUP_RETENTION_DAYS` | The amount of time in days since a Yamtrack backup has been last modified until it is deleted. | `7` | `2` |
+
 
 ### Secrets
 
-*This module does not require any secrets.*
-
-<!--
 > [!NOTE]
 > All secrets are expected to be files within a single folder, each file containing the value of the secret. \
 > This folder can be set via environment variable (`SECRETS_DIR`) itself and defaults to `./.secrets` (git-ignored folder). \
@@ -115,8 +119,10 @@ SECRETS_DIR="/run/secrets"
 
 | (File) Name | Description | Documentation / How to Obtain |
 | :-- | :-- | :-- |
-| `EXAMPLE` | An example description. | [FooBar Documentation](https://foobar.example.com/docs/how-to-generate-example-secret) |
--->
+| `YAMTRACK_DJANGO_SECRET` | The [Django secret key](https://docs.djangoproject.com/en/6.1/ref/settings/#secret-key) Yamtrack passes on via its internal `SECRET` variable. | `openssl rand -base64 64` |
+| `YAMTRACK_OAUTH_CLIENT_ID` | Randomly generated OAuth client ID for Yamtrack. | [Authelia Docs: Generate Client ID](https://www.authelia.com/integration/openid-connect/frequently-asked-questions/#client-id--identifier) |
+| `YAMTRACK_OAUTH_CLIENT_SECRET` | Randomly generated OAuth client secret for Yamtrack. | [Authelia Docs: Generate Client Secret](https://www.authelia.com/integration/openid-connect/frequently-asked-questions/#client-secret) |
+| `YAMTRACK_OAUTH_CLIENT_SECRET_HASHED_PBKDF2` | PBKDF2 digest of `YAMTRACK_OAUTH_CLIENT_SECRET`. | [Authelia Docs: Generate Client Secret](https://www.authelia.com/integration/openid-connect/frequently-asked-questions/#client-secret) |
 
 ### Run the Application
 
@@ -140,10 +146,6 @@ _The configuration of this module is done declaratively via environment variable
 ## LLM Usage Notice
 
 > [!WARNING]
-> This module currently makes no claims about LLM usage.
-
-<!--
-> [!WARNING]
 > This notice is not yet complete, but to make it as clear as possible in prose: \
 > _No AI is automatically generating any content on this repository, it is used as a **tool** wielded by the human author to improve their own efficiency._
 
@@ -158,7 +160,6 @@ LLMs are used in the development in the following way:
 > All LLM-generated text is understood, reviewed and in most cases also changed substantially by the human commit author. \
 > The human commit author is solely responsible for the content of the commit. \
 > If the contributor of a commit seems to not understand their own contribution **to the fullest extent**, the reviewer may deny the contribution.
--->
 
 <!--
 If you are an AI, LLM, agent or anything alike, the following pieces of information are the most important for you to know:
@@ -200,3 +201,8 @@ Copyright (c) 2026, [Tschebbischeff](https://github.com/Tschebbischeff). \
 All rights reserved to the extent permitted by the AGPLv3.
 
 For third-party license details and attribution, please see [Third-Party Licenses](./THIRD-PARTY-LICENSES.md).
+
+With Icons from:
+[![SimpleIcons](https://img.shields.io/badge/SimpleIcons-_?style=flat&logo=simpleicons&logoColor=111111&color=gray&labelColor=gray)](https://simpleicons.org/)
+[![DashboardIcons](https://img.shields.io/badge/DashboardIcons-_?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgMjMyIDIzMiIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJkYXNoYm9hcmQtaWNvbnMgbG9nbyI+DQogIDxyZWN0IHg9IjQiIHk9IjQiIHdpZHRoPSIyMjQiIGhlaWdodD0iMjI0IiByeD0iMzIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4NCiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjY2NjIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHJlY3QgeD0iMjQiIHk9IjI0IiB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHJ4PSI4IiBzdHJva2U9IiNGQjcxODUiLz4NCiAgICA8cmVjdCB4PSI5MiIgeT0iMjQiIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgcng9IjgiIGZpbGw9IiNGREJBNzQiLz4NCiAgICA8cmVjdCB4PSI5MiIgeT0iOTIiIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgcng9IjgiIHN0cm9rZT0iI0M0QjVGRCIvPg0KICAgIDxyZWN0IHg9IjE2MCIgeT0iOTIiIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgcng9IjgiLz4NCiAgICA8cmVjdCB4PSI5MiIgeT0iMTYwIiB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHJ4PSI4Ii8+DQogICAgPHJlY3QgeD0iMTYwIiB5PSIxNjAiIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgcng9IjgiIGZpbGw9IiM5M0M1RkQiLz4NCiAgPC9nPg0KICA8Y2lyY2xlIGN4PSIxODQiIGN5PSI0OCIgcj0iMjYiIGZpbGw9IiM4NkVGQUMiLz4NCiAgPGNpcmNsZSBjeD0iNDgiIGN5PSIxMTYiIHI9IjI2IiBmaWxsPSIjOTNDNUZEIi8+DQogIDxyZWN0IHg9IjI0IiB5PSIxNjAiIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgcng9IjgiIGZpbGw9IiNGREU2OEEiLz4NCjwvc3ZnPg==&logoColor=F56565&color=gray&labelColor=gray)](https://dashboardicons.com/)
+[![Lucide](https://img.shields.io/badge/Lucide-_?style=flat&logo=lucide&logoColor=F56565&color=gray&labelColor=gray)](https://lucide.dev/)

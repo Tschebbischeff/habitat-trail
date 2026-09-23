@@ -10,11 +10,18 @@ networks:
 
 volumes:
   habitat-config:
-  # SERVICENAME-config:
+  yamtrack-db:
+  # yamtrack-config:
 
-# secrets:
-#   SECRET_NAME:
-#     file: ${SECRETS_DIR}/SECRET_NAME
+secrets:
+  YAMTRACK_DJANGO_SECRET:
+    file: ${SECRETS_DIR}/YAMTRACK_DJANGO_SECRET
+  YAMTRACK_OAUTH_CLIENT_ID:
+    file: ${SECRETS_DIR}/YAMTRACK_OAUTH_CLIENT_ID
+  YAMTRACK_OAUTH_CLIENT_SECRET:
+    file: ${SECRETS_DIR}/YAMTRACK_OAUTH_CLIENT_SECRET
+  YAMTRACK_OAUTH_CLIENT_SECRET_HASHED_PBKDF2:
+    file: ${SECRETS_DIR}/YAMTRACK_OAUTH_CLIENT_SECRET_HASHED_PBKDF2
 
 
 services:
@@ -31,41 +38,63 @@ services:
         required: false
     environment:
       MODULE_NAME: "trail"
+    secrets:
+      - YAMTRACK_OAUTH_CLIENT_ID
+      - YAMTRACK_OAUTH_CLIENT_SECRET_HASHED_PBKDF2
     networks:
       internal:
     volumes:
       - habitat-config:/habitat-config/orchestration
       - ./habitat-config:/habitat-config/source:ro
-      # - SERVICENAME-config:/habitat-config/target/SERVICENAME
+      # - yamtrack-config:/habitat-config/target/yamtrack
 
-  SERVICENAME:
-    image: alpine:latest
-    # build:
-    #   context: ./SERVICENAME
-    container_name: ${APP_NAME_HOST}_SERVICENAME
+  yamtrack:
+    build:
+      context: ./yamtrack
+    container_name: ${APP_NAME_HOST}_yamtrack
     restart: unless-stopped
-    # expose:
-    #   - '1337'
+    expose:
+      - '8000'
     env_file:
       - ./.env
       - path: ${ENV_DIR}/.env
         required: false
-      - path: ${ENV_DIR}/SERVICENAME.env
+      - path: ${ENV_DIR}/yamtrack.env
         required: false
     environment:
-      FOO: 'bar'
-    # secrets:
-    #   - SECRET_NAME
-    # volumes:
-    #   - SERVICENAME-config:/DEST/PATH
+      REDIS_URL: "redis://${APP_NAME_HOST}_redis:6379"
+      REDIS_PREFIX: "yamtrack:"
+      URLS: "yamtrack.${APP_HOST}"
+      SECRET_FILE: "/run/secrets/YAMTRACK_DJANGO_SECRET"
+      SOCIAL_PROVIDERS: "allauth.socialaccount.providers.openid_connect"
+      SOCIALACCOUNT_PROVIDERS: "" # Set by entrypoint script from YAMTRACK_OAUTH_*_FILE credentials
+      YAMTRACK_OAUTH_CLIENT_ID_FILE: "/run/secrets/YAMTRACK_OAUTH_CLIENT_ID"
+      YAMTRACK_OAUTH_CLIENT_SECRET_FILE: "/run/secrets/YAMTRACK_OAUTH_CLIENT_SECRET"
+      ACCOUNT_LOGOUT_REDIRECT_URL: "https://authelia.${APP_HOST}/logout?rd=https%3A%2F%2Fyamtrack.${APP_HOST}"
+      SOCIALACCOUNT_ONLY: "True"
+      REDIRECT_LOGIN_TO_SSO: "True"
+      REGISTRATION: "False"
+      ADMIN_ENABLED: "True"
+      TMDB_NSFW: "${YAMTRACK_NSFW}"
+      MAL_NSFW: "${YAMTRACK_NSFW}"
+      MU_NSFW: "${YAMTRACK_NSFW}"
+      IGDB_NSFW: "${YAMTRACK_NSFW}"
+    secrets:
+      - YAMTRACK_DJANGO_SECRET
+      - YAMTRACK_OAUTH_CLIENT_ID
+      - YAMTRACK_OAUTH_CLIENT_SECRET
+    volumes:
+      - yamtrack-db:/yamtrack/db
+      - ${VOLUME_DIR}/yamtrack-backups:/backups
+      # - yamtrack-config:/DEST/PATH
     networks:
       internal:
-    # healthcheck:
-    #   test: [ "CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:1337/healthz" ]
-    #   interval: 30s
-    #   timeout: 10s
-    #   retries: 5
-    #   start_period: 10s
+    healthcheck:
+      test: [ "CMD-SHELL", "wget --no-verbose --tries=1 --spider -q http://127.0.0.1:8000/health/ || exit 1" ]
+      interval: 45s
+      timeout: 15s
+      retries: 5
+      start_period: 30s
     depends_on:
       habitat-config-trail:
         condition: service_completed_successfully

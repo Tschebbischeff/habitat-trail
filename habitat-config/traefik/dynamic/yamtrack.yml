@@ -1,0 +1,21 @@
+# Documentation:
+# https://doc.traefik.io/traefik/reference/routing-configuration/dynamic-configuration-methods/
+# https://doc.traefik.io/traefik/reference/routing-configuration/http/tls/overview/
+
+http:
+  services:
+    svc_yamtrack-8000:
+      loadBalancer:
+        servers:
+          - url: 'http://{{ env "APP_NAME_HOST" }}_yamtrack:8000'
+  routers:
+    yamtrack-8000:
+      rule: 'Host(`yamtrack.{{ env "APP_HOST" }}`)'
+      priority: 1
+      service: svc_yamtrack-8000
+      entryPoints: ["websecure"]
+      middlewares:
+        - "cors-policy"
+        - "auth-proxy"
+      tls:
+        certResolver: porkbun-api
