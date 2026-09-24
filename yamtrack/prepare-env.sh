@@ -38,7 +38,7 @@ SOCIALACCOUNT_PROVIDERS="$(cat <<EOF
         }
       }
     ],
-    "SCOPE": ["openid", "profile", "email", "groups"],
+    "SCOPE": ["openid", "profile", "email", "groups"]
   }
 }
 EOF
