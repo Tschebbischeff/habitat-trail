@@ -80,6 +80,7 @@ services:
       ACCOUNT_LOGOUT_REDIRECT_URL: "https://authelia.${APP_HOST}/logout?rd=https%3A%2F%2Fyamtrack.${APP_HOST}"
       SOCIALACCOUNT_ONLY: "True"
       REDIRECT_LOGIN_TO_SSO: "True"
+      OIDC_ADMIN_GROUPS: "[\"admins\",\"yamtrack_admins\"]"
       ADMIN_ENABLED: "True"
       TMDB_NSFW: "${YAMTRACK_NSFW}"
       MAL_NSFW: "${YAMTRACK_NSFW}"
