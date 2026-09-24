@@ -37,7 +37,8 @@ SOCIALACCOUNT_PROVIDERS="$(cat <<EOF
           "server_url": "https://authelia.${APP_HOST}/.well-known/openid-configuration"
         }
       }
-    ]
+    ],
+    "SCOPE": ["openid", "profile", "email", "groups"],
   }
 }
 EOF
