@@ -6,6 +6,7 @@ http:
   services:
     svc_yamtrack-8000:
       loadBalancer:
+        passHostHeader: true
         servers:
           - url: 'http://{{ env "APP_NAME_HOST" }}_yamtrack:8000'
   routers:
