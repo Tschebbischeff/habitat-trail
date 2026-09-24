@@ -4,7 +4,7 @@
 # None
 
 # Override for environment variables mountable as secrets via _FILE suffix
-. ./prepare-env.sh
+. /prepare-env.sh
 
 CRONTAB_USER="root"
 tmpCronFile="$(mktemp)"
