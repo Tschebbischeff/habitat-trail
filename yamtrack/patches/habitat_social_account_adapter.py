@@ -12,6 +12,7 @@ class HabitatSocialAccountAdapter(DefaultSocialAccountAdapter):
 
     def _sync_oidc(self, user, sociallogin):
         extra_data = sociallogin.account.extra_data or {}
+        print("OIDC Extra Data:", extra_data)
         oidc_groups = (
             extra_data.get("groups")
             or extra_data.get("roles")
