@@ -14,6 +14,7 @@ class HabitatSocialAccountAdapter(DefaultSocialAccountAdapter):
         extra_data = sociallogin.account.extra_data or {}
         oidc_groups = (
             extra_data.get("groups")
+            or (extra_data.get("userinfo") or {}).get("groups")
             or extra_data.get("roles")
             or (extra_data.get("realm_access") or {}).get("roles")
             or []
@@ -30,12 +31,6 @@ class HabitatSocialAccountAdapter(DefaultSocialAccountAdapter):
             target_groups.append(group)
             if group_name in admin_groups:
                 is_admin = True
-        print("******************************")
-        print(f"{extra_data=}")
-        print(f"{oidc_groups=}")
-        print(f"{admin_groups=}")
-        print(f"{target_groups=}")
-        print("******************************")
         user.is_staff = is_admin
         user.is_superuser = is_admin
         user.save(update_fields=["is_staff", "is_superuser"])
