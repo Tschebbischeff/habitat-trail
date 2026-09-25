@@ -1,11 +1,11 @@
-FROM ghcr.io/fuzzygrim/yamtrack:latest
+FROM ghcr.io/dannyvfilms/floppy:latest
 
 RUN apk upgrade --no-cache -a; \
     apk add --no-cache patch dcron grep sqlite
 
 COPY ./patches /habitat-patches
-RUN patch -f -r - "/yamtrack/config/settings.py" <"/habitat-patches/settings.py.patch"
-RUN cp -f "/habitat-patches/habitat_social_account_adapter.py" "/yamtrack/users/habitat_social_account_adapter.py"
+RUN patch -f -r - "/floppy/config/settings.py" <"/habitat-patches/settings.py.patch"
+RUN cp -f "/habitat-patches/habitat_social_account_adapter.py" "/floppy/users/habitat_social_account_adapter.py"
 RUN rm -rf /habitat-patches
 
 COPY ./backup.sh /backup.sh

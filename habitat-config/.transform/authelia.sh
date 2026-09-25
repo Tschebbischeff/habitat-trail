@@ -2,8 +2,8 @@
 
 SOURCE_PATH="$1"
 
-export YAMTRACK_OAUTH_CLIENT_ID="$(cat "/run/secrets/YAMTRACK_OAUTH_CLIENT_ID")"
-export YAMTRACK_OAUTH_CLIENT_SECRET_HASHED_PBKDF2="$(cat "/run/secrets/YAMTRACK_OAUTH_CLIENT_SECRET_HASHED_PBKDF2")"
+export FLOPPY_OAUTH_CLIENT_ID="$(cat "/run/secrets/FLOPPY_OAUTH_CLIENT_ID")"
+export FLOPPY_OAUTH_CLIENT_SECRET_HASHED_PBKDF2="$(cat "/run/secrets/FLOPPY_OAUTH_CLIENT_SECRET_HASHED_PBKDF2")"
 
 find "$SOURCE_PATH" -type f -name '*.yml' | while read -r filePath; do
     if envsubst <"$filePath" >"$filePath.envsubst"; then

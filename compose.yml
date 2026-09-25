@@ -10,20 +10,20 @@ networks:
 
 volumes:
   habitat-config:
-  yamtrack-db:
-  # yamtrack-config:
+  floppy-db:
+  # floppy-config:
 
 secrets:
   REDIS_PASSWORD:
     file: ${SECRETS_DIR}/REDIS_PASSWORD
-  YAMTRACK_DJANGO_SECRET:
-    file: ${SECRETS_DIR}/YAMTRACK_DJANGO_SECRET
-  YAMTRACK_OAUTH_CLIENT_ID:
-    file: ${SECRETS_DIR}/YAMTRACK_OAUTH_CLIENT_ID
-  YAMTRACK_OAUTH_CLIENT_SECRET:
-    file: ${SECRETS_DIR}/YAMTRACK_OAUTH_CLIENT_SECRET
-  YAMTRACK_OAUTH_CLIENT_SECRET_HASHED_PBKDF2:
-    file: ${SECRETS_DIR}/YAMTRACK_OAUTH_CLIENT_SECRET_HASHED_PBKDF2
+  FLOPPY_DJANGO_SECRET:
+    file: ${SECRETS_DIR}/FLOPPY_DJANGO_SECRET
+  FLOPPY_OAUTH_CLIENT_ID:
+    file: ${SECRETS_DIR}/FLOPPY_OAUTH_CLIENT_ID
+  FLOPPY_OAUTH_CLIENT_SECRET:
+    file: ${SECRETS_DIR}/FLOPPY_OAUTH_CLIENT_SECRET
+  FLOPPY_OAUTH_CLIENT_SECRET_HASHED_PBKDF2:
+    file: ${SECRETS_DIR}/FLOPPY_OAUTH_CLIENT_SECRET_HASHED_PBKDF2
 
 
 services:
@@ -41,19 +41,19 @@ services:
     environment:
       MODULE_NAME: "trail"
     secrets:
-      - YAMTRACK_OAUTH_CLIENT_ID
-      - YAMTRACK_OAUTH_CLIENT_SECRET_HASHED_PBKDF2
+      - FLOPPY_OAUTH_CLIENT_ID
+      - FLOPPY_OAUTH_CLIENT_SECRET_HASHED_PBKDF2
     networks:
       internal:
     volumes:
       - habitat-config:/habitat-config/orchestration
       - ./habitat-config:/habitat-config/source:ro
-      # - yamtrack-config:/habitat-config/target/yamtrack
+      # - floppy-config:/habitat-config/target/floppy
 
-  yamtrack:
+  floppy:
     build:
-      context: ./yamtrack
-    container_name: ${APP_NAME_HOST}_yamtrack
+      context: ./floppy
+    container_name: ${APP_NAME_HOST}_floppy
     restart: unless-stopped
     expose:
       - '8000'
@@ -61,7 +61,7 @@ services:
       - ./.env
       - path: ${ENV_DIR}/.env
         required: false
-      - path: ${ENV_DIR}/yamtrack.env
+      - path: ${ENV_DIR}/floppy.env
         required: false
     environment:
       # REDIS_URL: "redis://${APP_NAME_HOST}_redis:6379"
@@ -70,31 +70,31 @@ services:
       REDIS_DB: "2"
       REDIS_USER: "default"
       REDIS_PASSWORD_FILE: '/run/secrets/REDIS_PASSWORD'
-      # REDIS_PREFIX: "yamtrack:"
-      URLS: "https://yamtrack.${APP_HOST}"
-      SECRET_FILE: "/run/secrets/YAMTRACK_DJANGO_SECRET"
+      # REDIS_PREFIX: "floppy:"
+      URLS: "https://floppy.${APP_HOST}"
+      SECRET_FILE: "/run/secrets/FLOPPY_DJANGO_SECRET"
       SOCIAL_PROVIDERS: "allauth.socialaccount.providers.openid_connect"
-      SOCIALACCOUNT_PROVIDERS: "" # Set by entrypoint script from YAMTRACK_OAUTH_*_FILE credentials
-      YAMTRACK_OAUTH_CLIENT_ID_FILE: "/run/secrets/YAMTRACK_OAUTH_CLIENT_ID"
-      YAMTRACK_OAUTH_CLIENT_SECRET_FILE: "/run/secrets/YAMTRACK_OAUTH_CLIENT_SECRET"
-      ACCOUNT_LOGOUT_REDIRECT_URL: "https://authelia.${APP_HOST}/logout?rd=https%3A%2F%2Fyamtrack.${APP_HOST}"
+      SOCIALACCOUNT_PROVIDERS: "" # Set by entrypoint script from FLOPPY_OAUTH_*_FILE credentials
+      FLOPPY_OAUTH_CLIENT_ID_FILE: "/run/secrets/FLOPPY_OAUTH_CLIENT_ID"
+      FLOPPY_OAUTH_CLIENT_SECRET_FILE: "/run/secrets/FLOPPY_OAUTH_CLIENT_SECRET"
+      ACCOUNT_LOGOUT_REDIRECT_URL: "https://authelia.${APP_HOST}/logout?rd=https%3A%2F%2Ffloppy.${APP_HOST}"
       SOCIALACCOUNT_ONLY: "True"
       REDIRECT_LOGIN_TO_SSO: "True"
-      OIDC_ADMIN_GROUPS: "[\"admins\",\"yamtrack_admins\"]"
+      OIDC_ADMIN_GROUPS: "[\"admins\",\"floppy_admins\"]"
       ADMIN_ENABLED: "True"
-      TMDB_NSFW: "${YAMTRACK_NSFW}"
-      MAL_NSFW: "${YAMTRACK_NSFW}"
-      MU_NSFW: "${YAMTRACK_NSFW}"
-      IGDB_NSFW: "${YAMTRACK_NSFW}"
+      TMDB_NSFW: "${FLOPPY_NSFW}"
+      MAL_NSFW: "${FLOPPY_NSFW}"
+      MU_NSFW: "${FLOPPY_NSFW}"
+      IGDB_NSFW: "${FLOPPY_NSFW}"
     secrets:
       - REDIS_PASSWORD
-      - YAMTRACK_DJANGO_SECRET
-      - YAMTRACK_OAUTH_CLIENT_ID
-      - YAMTRACK_OAUTH_CLIENT_SECRET
+      - FLOPPY_DJANGO_SECRET
+      - FLOPPY_OAUTH_CLIENT_ID
+      - FLOPPY_OAUTH_CLIENT_SECRET
     volumes:
-      - yamtrack-db:/yamtrack/db
-      - ${VOLUME_DIR}/yamtrack-backups:/backups
-      # - yamtrack-config:/DEST/PATH
+      - floppy-db:/floppy/db
+      - ${VOLUME_DIR}/floppy-backups:/backups
+      # - floppy-config:/DEST/PATH
     networks:
       internal:
     healthcheck:

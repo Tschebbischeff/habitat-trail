@@ -1,9 +1,9 @@
---- settings.from.py	2026-09-24 17:04:48.075308233 +0200
-+++ settings.to.py	2026-09-24 17:31:45.939495640 +0200
-@@ -654,3 +654,6 @@
+--- settings.from.py	2026-09-25 02:47:37.270813712 +0200
++++ settings.to.py	2026-09-25 02:47:50.200306617 +0200
+@@ -2018,3 +2018,6 @@
  REDIRECT_LOGIN_TO_SSO = config("REDIRECT_LOGIN_TO_SSO", default=False, cast=bool)
  
- SESSION_COOKIE_AGE = config("SESSION_COOKIE_AGE", default=60 * 60 * 24 * 14, cast=int)
+ DEMO_ACCOUNT_ENABLED = config("DEMO_ACCOUNT_ENABLED", default=True, cast=bool)
 +
 +SOCIALACCOUNT_ADAPTER = config("SOCIALACCOUNT_ADAPTER", default="users.habitat_social_account_adapter.HabitatSocialAccountAdapter")
 +OIDC_ADMIN_GROUPS = config("OIDC_ADMIN_GROUPS", default="[]", cast=json.loads)

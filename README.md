@@ -18,10 +18,10 @@ You can check out all officially available modules [here](https://github.com/Tsc
 
 ## Module Features
 
-[![Yamtrack](https://img.shields.io/badge/Yamtrack-_?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZWxsaXBzZSBjeD0iMjU3LjkiIGN5PSIyNjIuMiIgcng9IjIyMS44IiByeT0iMjA2LjciIHN0eWxlPSJmaWxsOiNmZmYiLz48cGF0aCBkPSJNMjMyNSA1MTE0Yy0xNi0yLTY4LTktMTE1LTE1LTI0OC0zMi01MzUtMTIwLTc2OC0yMzQtMjc3LTEzNS00NzUtMjc3LTY5My00OTQtNDA5LTQxMC02NjAtOTE2LTczNC0xNDg0LTIwLTE1NS0yMC00NzQgMC02MzcgNzItNTc5IDMyMC0xMDg3IDczNC0xNTAwIDMyMS0zMjEgNjkzLTU0MCAxMTE2LTY1OCAyNjAtNzMgNDY4LTk3IDc3MC04OSAzODEgMTAgNjk1IDg1IDEwMzAgMjQ2IDQzOSAyMTIgODExIDU0NCAxMDcwIDk1NiAxOTIgMzA1IDMyOSA2OTUgMzcxIDEwNjEgMjAgMTY3IDE0IDUwMC0xMSA2NjQtODMgNTQ3LTMzMiAxMDQ2LTcxNSAxNDMxLTY5IDY5LTE2MCAxNTMtMjAzIDE4OC0yODEgMjI2LTY0NCA0MDktOTg3IDQ5Ni0yMTAgNTQtMzIwIDY3LTU4NSA3MC0xMzcgMi0yNjMgMS0yODAtMW0xNzE4LTExNzhjODctNDIgMTE5LTEyNiA3OS0yMDYtMTktMzktMjItMzktMTE2LTIwLTExMCAyMi0zMTQtMTMtNDcyLTgwLTUxNC0yMjAtOTg0LTc5OC0xMjEzLTE0OTEtNzEtMjE2LTk0LTMzNy0xMTAtNTgwLTE0LTIwNi0yNi0yMTktMjA5LTIxOS03NSAwLTEwNC01LTE1NC0yNS0zNC0xNC02Mi0yNS02My0yNXMtMTAgMTgtMjAgMzlsLTE3IDQwIDQyIDYzYzExNiAxNzQgMjE0IDQ1MiAyNzEgNzczIDMwIDE3MCAzOCA0ODcgMTUgNjQzLTUwIDM0Mi0xOTMgNTg3LTM4NiA2NjQtNDUgMTktNzUgMjMtMTcwIDIzLTExMCAwLTExOC0xLTE4MS0zMy03Mi0zNS0xODAtMTM4LTIzNC0yMjQtMTctMjctMzItNDgtMzUtNDhzLTI0IDE4LTQ1IDQwYy0zOSA0MC00MCA0My0zOSAxMDkgMCA1NyA2IDgwIDMzIDEzNiA2MiAxMjUgMTk5IDIzNCAzNTAgMjc3IDg5IDI2IDI2MiAyNyAzNTEgNCAzMjgtODggNTU0LTQ1MSA2MjAtOTk2IDYtNTIgMTMtOTYgMTUtOThzMjAgMjggMzkgNjdjNDYgOTAgOTEgMTYyIDE3OSAyODEgMzA3IDQxNyA2OTkgNzQ3IDEwMjYgODY0IDE3MSA2MSAzNDYgNzAgNDQ0IDIyIiBzdHlsZT0iZmlsbDojMjYyYTJkIiB0cmFuc2Zvcm09Im1hdHJpeCguMSAwIDAgLS4xIDAgNTEyKSIvPjwvc3ZnPg==&logoColor=000000&color=gray&labelColor=gray)](https://fuzzygrim.github.io/Yamtrack)
+[![Floppy](https://img.shields.io/badge/Floppy-_?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZWxsaXBzZSBjeD0iMjU3LjkiIGN5PSIyNjIuMiIgcng9IjIyMS44IiByeT0iMjA2LjciIHN0eWxlPSJmaWxsOiNmZmYiLz48cGF0aCBkPSJNMjMyNSA1MTE0Yy0xNi0yLTY4LTktMTE1LTE1LTI0OC0zMi01MzUtMTIwLTc2OC0yMzQtMjc3LTEzNS00NzUtMjc3LTY5My00OTQtNDA5LTQxMC02NjAtOTE2LTczNC0xNDg0LTIwLTE1NS0yMC00NzQgMC02MzcgNzItNTc5IDMyMC0xMDg3IDczNC0xNTAwIDMyMS0zMjEgNjkzLTU0MCAxMTE2LTY1OCAyNjAtNzMgNDY4LTk3IDc3MC04OSAzODEgMTAgNjk1IDg1IDEwMzAgMjQ2IDQzOSAyMTIgODExIDU0NCAxMDcwIDk1NiAxOTIgMzA1IDMyOSA2OTUgMzcxIDEwNjEgMjAgMTY3IDE0IDUwMC0xMSA2NjQtODMgNTQ3LTMzMiAxMDQ2LTcxNSAxNDMxLTY5IDY5LTE2MCAxNTMtMjAzIDE4OC0yODEgMjI2LTY0NCA0MDktOTg3IDQ5Ni0yMTAgNTQtMzIwIDY3LTU4NSA3MC0xMzcgMi0yNjMgMS0yODAtMW0xNzE4LTExNzhjODctNDIgMTE5LTEyNiA3OS0yMDYtMTktMzktMjItMzktMTE2LTIwLTExMCAyMi0zMTQtMTMtNDcyLTgwLTUxNC0yMjAtOTg0LTc5OC0xMjEzLTE0OTEtNzEtMjE2LTk0LTMzNy0xMTAtNTgwLTE0LTIwNi0yNi0yMTktMjA5LTIxOS03NSAwLTEwNC01LTE1NC0yNS0zNC0xNC02Mi0yNS02My0yNXMtMTAgMTgtMjAgMzlsLTE3IDQwIDQyIDYzYzExNiAxNzQgMjE0IDQ1MiAyNzEgNzczIDMwIDE3MCAzOCA0ODcgMTUgNjQzLTUwIDM0Mi0xOTMgNTg3LTM4NiA2NjQtNDUgMTktNzUgMjMtMTcwIDIzLTExMCAwLTExOC0xLTE4MS0zMy03Mi0zNS0xODAtMTM4LTIzNC0yMjQtMTctMjctMzItNDgtMzUtNDhzLTI0IDE4LTQ1IDQwYy0zOSA0MC00MCA0My0zOSAxMDkgMCA1NyA2IDgwIDMzIDEzNiA2MiAxMjUgMTk5IDIzNCAzNTAgMjc3IDg5IDI2IDI2MiAyNyAzNTEgNCAzMjgtODggNTU0LTQ1MSA2MjAtOTk2IDYtNTIgMTMtOTYgMTUtOThzMjAgMjggMzkgNjdjNDYgOTAgOTEgMTYyIDE3OSAyODEgMzA3IDQxNyA2OTkgNzQ3IDEwMjYgODY0IDE3MSA2MSAzNDYgNzAgNDQ0IDIyIiBzdHlsZT0iZmlsbDojMjYyYTJkIiB0cmFuc2Zvcm09Im1hdHJpeCguMSAwIDAgLS4xIDAgNTEyKSIvPjwvc3ZnPg==&logoColor=000000&color=gray&labelColor=gray)](https://github.com/dannyvfilms/Floppy)
 
  - **Media Tracking** \
- Track movies, tv shows, animea, manga, games, books, comics and board games with Yamtrack.
+ Track movies, tv shows, animea, manga, games, books, comics and board games with Floppy.
 
 ### Planned
 
@@ -105,9 +105,9 @@ SECRETS_DIR="/run/secrets"
 
 | Name | Description | Example | Default |
 | :-- | :-- | :-- | :-- |
-| `YAMTRACK_NSFW` | Whether or not to include adult content in any Yamtrack media searches. | `True` | `False` |
-| `YAMTRACK_BACKUP_SCHEDULE` | A cron schedule in the form of `M H DoM MoY DoW`, determining when the Yamtrack `/yamtrack/db` directory is backed up to `/backup`. | `30 23 * * *` | `30 1 * * *` |
-| `YAMTRACK_BACKUP_RETENTION_DAYS` | The amount of time in days since a Yamtrack backup has been last modified until it is deleted. | `7` | `2` |
+| `FLOPPY_NSFW` | Whether or not to include adult content in any Floppy media searches. | `True` | `False` |
+| `FLOPPY_BACKUP_SCHEDULE` | A cron schedule in the form of `M H DoM MoY DoW`, determining when the Floppy `/floppy/db` directory is backed up to `/backup`. | `30 23 * * *` | `30 1 * * *` |
+| `FLOPPY_BACKUP_RETENTION_DAYS` | The amount of time in days since a Floppy backup has been last modified until it is deleted. | `7` | `2` |
 
 
 ### Secrets
@@ -119,10 +119,10 @@ SECRETS_DIR="/run/secrets"
 
 | (File) Name | Description | Documentation / How to Obtain |
 | :-- | :-- | :-- |
-| `YAMTRACK_DJANGO_SECRET` | The [Django secret key](https://docs.djangoproject.com/en/6.1/ref/settings/#secret-key) Yamtrack passes on via its internal `SECRET` variable. | `openssl rand -base64 64` |
-| `YAMTRACK_OAUTH_CLIENT_ID` | Randomly generated OAuth client ID for Yamtrack. | [Authelia Docs: Generate Client ID](https://www.authelia.com/integration/openid-connect/frequently-asked-questions/#client-id--identifier) |
-| `YAMTRACK_OAUTH_CLIENT_SECRET` | Randomly generated OAuth client secret for Yamtrack. | [Authelia Docs: Generate Client Secret](https://www.authelia.com/integration/openid-connect/frequently-asked-questions/#client-secret) |
-| `YAMTRACK_OAUTH_CLIENT_SECRET_HASHED_PBKDF2` | PBKDF2 digest of `YAMTRACK_OAUTH_CLIENT_SECRET`. | [Authelia Docs: Generate Client Secret](https://www.authelia.com/integration/openid-connect/frequently-asked-questions/#client-secret) |
+| `FLOPPY_DJANGO_SECRET` | The [Django secret key](https://docs.djangoproject.com/en/6.1/ref/settings/#secret-key) Floppy passes on via its internal `SECRET` variable. | `openssl rand -base64 64` |
+| `FLOPPY_OAUTH_CLIENT_ID` | Randomly generated OAuth client ID for Floppy. | [Authelia Docs: Generate Client ID](https://www.authelia.com/integration/openid-connect/frequently-asked-questions/#client-id--identifier) |
+| `FLOPPY_OAUTH_CLIENT_SECRET` | Randomly generated OAuth client secret for Floppy. | [Authelia Docs: Generate Client Secret](https://www.authelia.com/integration/openid-connect/frequently-asked-questions/#client-secret) |
+| `FLOPPY_OAUTH_CLIENT_SECRET_HASHED_PBKDF2` | PBKDF2 digest of `FLOPPY_OAUTH_CLIENT_SECRET`. | [Authelia Docs: Generate Client Secret](https://www.authelia.com/integration/openid-connect/frequently-asked-questions/#client-secret) |
 
 ### Run the Application
 

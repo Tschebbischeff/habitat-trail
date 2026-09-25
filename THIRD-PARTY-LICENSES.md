@@ -24,11 +24,11 @@ The date used in the copyright notices in this file represents the year indicate
 * **Copyright Notice:** <COPYRIGHT_NOTICE>
 -->
 
-## Yamtrack
+## Floppy
 
-* **Project:** https://fuzzygrim.github.io/Yamtrack
+* **Project:** https://github.com/dannyvfilms/Floppy/wiki
 * **Version:** Latest
 * **In use since:** September 2026
-* **Source Code:** https://github.com/FuzzyGrim/Yamtrack
-* **License:** [AGPL-3.0](https://github.com/FuzzyGrim/Yamtrack/blob/dev/LICENSE)
-* **Copyright Notice:** Copyright (c) 2022 FuzzyGrim
+* **Source Code:** https://github.com/dannyvfilms/Floppy
+* **License:** [AGPL-3.0](https://github.com/dannyvfilms/Floppy/blob/latest/LICENSE)
+* **Copyright Notice:** Copyright (c) 2022 DannyVFilms

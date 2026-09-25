@@ -4,16 +4,16 @@
 
 http:
   services:
-    svc_yamtrack-8000:
+    svc_floppy-8000:
       loadBalancer:
         passHostHeader: true
         servers:
-          - url: 'http://{{ env "APP_NAME_HOST" }}_yamtrack:8000'
+          - url: 'http://{{ env "APP_NAME_HOST" }}_floppy:8000'
   routers:
-    yamtrack-8000:
-      rule: 'Host(`yamtrack.{{ env "APP_HOST" }}`)'
+    floppy-8000:
+      rule: 'Host(`floppy.{{ env "APP_HOST" }}`)'
       priority: 1
-      service: svc_yamtrack-8000
+      service: svc_floppy-8000
       entryPoints: ["websecure"]
       middlewares:
         - "cors-policy"

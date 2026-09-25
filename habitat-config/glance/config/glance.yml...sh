@@ -24,14 +24,14 @@ sites: []
 EOF
 
 cat >"$SOURCE_FILE_APP_SITE" <<'EOF'
-- title: Yamtrack
-  url: https://yamtrack.${APP_HOST}
-  check-url: http://${APP_NAME_HOST}_yamtrack:8000
-  icon: /assets/icons/di/yamtrack.svg
+- title: Floppy
+  url: https://floppy.${APP_HOST}
+  check-url: http://${APP_NAME_HOST}_floppy:8000
+  icon: /assets/icons/di/floppy.svg
 EOF
 
 cat >"$SOURCE_FILE_DEV_REPOSITORIES" <<'EOF'
-- fuzzygrim/yamtrack
+- dannyvfilms/floppy
 EOF
 
 

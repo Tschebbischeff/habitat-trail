@@ -3,12 +3,12 @@
 [ -z "$SECRET" ] && [ -f "$SECRET_FILE" ] && \
   export SECRET="$(cat "$SECRET_FILE")" && \
   unset SECRET_FILE
-[ -z "$YAMTRACK_OAUTH_CLIENT_ID" ] && [ -f "$YAMTRACK_OAUTH_CLIENT_ID_FILE" ] && \
-  YAMTRACK_OAUTH_CLIENT_ID="$(cat "$YAMTRACK_OAUTH_CLIENT_ID_FILE")" && \
-  unset YAMTRACK_OAUTH_CLIENT_ID_FILE
-[ -z "$YAMTRACK_OAUTH_CLIENT_SECRET" ] && [ -f "$YAMTRACK_OAUTH_CLIENT_SECRET_FILE" ] && \
-  YAMTRACK_OAUTH_CLIENT_SECRET="$(cat "$YAMTRACK_OAUTH_CLIENT_SECRET_FILE")" && \
-  unset YAMTRACK_OAUTH_CLIENT_SECRET_FILE
+[ -z "$FLOPPY_OAUTH_CLIENT_ID" ] && [ -f "$FLOPPY_OAUTH_CLIENT_ID_FILE" ] && \
+  FLOPPY_OAUTH_CLIENT_ID="$(cat "$FLOPPY_OAUTH_CLIENT_ID_FILE")" && \
+  unset FLOPPY_OAUTH_CLIENT_ID_FILE
+[ -z "$FLOPPY_OAUTH_CLIENT_SECRET" ] && [ -f "$FLOPPY_OAUTH_CLIENT_SECRET_FILE" ] && \
+  FLOPPY_OAUTH_CLIENT_SECRET="$(cat "$FLOPPY_OAUTH_CLIENT_SECRET_FILE")" && \
+  unset FLOPPY_OAUTH_CLIENT_SECRET_FILE
 REDIS_HOST="${REDIS_HOST:-redis}"
 REDIS_PORT="${REDIS_PORT:-6379}"
 REDIS_DB="${REDIS_DB:-0}"
@@ -31,8 +31,8 @@ SOCIALACCOUNT_PROVIDERS="$(cat <<EOF
       {
         "provider_id": "authelia",
         "name": "Authelia",
-        "client_id": "$YAMTRACK_OAUTH_CLIENT_ID",
-        "secret": "$YAMTRACK_OAUTH_CLIENT_SECRET",
+        "client_id": "$FLOPPY_OAUTH_CLIENT_ID",
+        "secret": "$FLOPPY_OAUTH_CLIENT_SECRET",
         "settings": {
           "server_url": "https://authelia.${APP_HOST}/.well-known/openid-configuration"
         }
