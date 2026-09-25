@@ -93,7 +93,7 @@ services:
       - FLOPPY_OAUTH_CLIENT_SECRET
     volumes:
       - floppy-db:/floppy/db
-      - ${VOLUME_DIR}/floppy-backups:/backups
+      - ${VOLUME_DIR}/floppy-backups:/floppy/backups
       # - floppy-config:/DEST/PATH
     networks:
       internal:

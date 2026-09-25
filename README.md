@@ -106,8 +106,6 @@ SECRETS_DIR="/run/secrets"
 | Name | Description | Example | Default |
 | :-- | :-- | :-- | :-- |
 | `FLOPPY_NSFW` | Whether or not to include adult content in any Floppy media searches. | `True` | `False` |
-| `FLOPPY_BACKUP_SCHEDULE` | A cron schedule in the form of `M H DoM MoY DoW`, determining when the Floppy `/floppy/db` directory is backed up to `/backup`. | `30 23 * * *` | `30 1 * * *` |
-| `FLOPPY_BACKUP_RETENTION_DAYS` | The amount of time in days since a Floppy backup has been last modified until it is deleted. | `7` | `2` |
 
 
 ### Secrets
@@ -131,13 +129,8 @@ SECRETS_DIR="/run/secrets"
 
 ## Backups
 
-> [!WARNING]
-> This module currently supports no backups via `VOLUME_DIR`.
-
-<!--
 > [!NOTE]
 > Set the environment variable `VOLUME_DIR` to a path on the host you apply your backup strategy to.
--->
 
 <!--
 _The configuration of this module is done declaratively via environment variables or via cross-module configuration, generates no user-data and requires no backups._
