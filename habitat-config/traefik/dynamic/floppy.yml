@@ -11,7 +11,7 @@ http:
           - url: 'http://{{ env "APP_NAME_HOST" }}_floppy:8000'
   routers:
     floppy-8000-pwa:
-      rule: 'Host(`{{ env "APP_HOST" }}`) && (PathPrefix(`/static/favicon/`) || PathPrefix(`/static/img/shortcuts/`))'
+      rule: 'Host(`floppy.{{ env "APP_HOST" }}`) && (PathPrefix(`/static/favicon/`) || PathPrefix(`/static/img/shortcuts/`))'
       service: svc_floppy-8000
       entryPoints: ["websecure"]
       priority: 100
