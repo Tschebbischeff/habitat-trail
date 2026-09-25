@@ -12,11 +12,14 @@ class HabitatSocialAccountAdapter(DefaultSocialAccountAdapter):
 
     def _sync_oidc(self, user, sociallogin):
         extra_data = sociallogin.account.extra_data or {}
+        user_info = extra_data.get("userinfo") or {}
         oidc_groups = (
             extra_data.get("groups")
-            or (extra_data.get("userinfo") or {}).get("groups")
+            or user_info.get("groups")
             or extra_data.get("roles")
+            or user_info.get("roles")
             or (extra_data.get("realm_access") or {}).get("roles")
+            or (user_info.get("realm_access") or {}).get("roles")
             or []
         )
         if not isinstance(oidc_groups, (list, tuple)):
