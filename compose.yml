@@ -82,10 +82,6 @@ services:
       REDIRECT_LOGIN_TO_SSO: "True"
       OIDC_ADMIN_GROUPS: "[\"admins\",\"floppy_admins\"]"
       ADMIN_ENABLED: "True"
-      TMDB_NSFW: "${FLOPPY_NSFW}"
-      MAL_NSFW: "${FLOPPY_NSFW}"
-      MU_NSFW: "${FLOPPY_NSFW}"
-      IGDB_NSFW: "${FLOPPY_NSFW}"
     secrets:
       - REDIS_PASSWORD
       - FLOPPY_DJANGO_SECRET
