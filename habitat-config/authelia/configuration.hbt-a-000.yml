@@ -1,6 +1,8 @@
 access_control:
   rules:
-    - domain: '*.floppy.{{ env "APP_HOST" }}'
+    - domain:
+        - 'floppy.{{ env "APP_HOST" }}'
+        - '*.floppy.{{ env "APP_HOST" }}'
       subject: 'group:floppy_users'
       policy: one_factor
 
