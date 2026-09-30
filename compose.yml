@@ -77,7 +77,7 @@ services:
       SOCIALACCOUNT_PROVIDERS: "" # Set by entrypoint script from FLOPPY_OAUTH_*_FILE credentials
       FLOPPY_OAUTH_CLIENT_ID_FILE: "/run/secrets/FLOPPY_OAUTH_CLIENT_ID"
       FLOPPY_OAUTH_CLIENT_SECRET_FILE: "/run/secrets/FLOPPY_OAUTH_CLIENT_SECRET"
-      ACCOUNT_LOGOUT_REDIRECT_URL: "https://authelia.${APP_HOST}/logout?rd=https%3A%2F%2Ffloppy.${APP_HOST}"
+      ACCOUNT_LOGOUT_REDIRECT_URL: "https://${APP_AUTH_HOST}/logout?rd=https%3A%2F%2Ffloppy.${APP_HOST}"
       SOCIALACCOUNT_ONLY: "True"
       REDIRECT_LOGIN_TO_SSO: "True"
       OIDC_ADMIN_GROUPS: "[\"admins\",\"floppy_admins\"]"

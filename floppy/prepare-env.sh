@@ -34,7 +34,7 @@ SOCIALACCOUNT_PROVIDERS="$(cat <<EOF
         "client_id": "$FLOPPY_OAUTH_CLIENT_ID",
         "secret": "$FLOPPY_OAUTH_CLIENT_SECRET",
         "settings": {
-          "server_url": "https://authelia.${APP_HOST}/.well-known/openid-configuration"
+          "server_url": "https://${APP_AUTH_HOST}/.well-known/openid-configuration"
         }
       }
     ],
