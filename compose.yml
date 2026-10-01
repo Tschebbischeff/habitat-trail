@@ -72,6 +72,7 @@ services:
       REDIS_DB: "2"
       REDIS_USER: "default"
       REDIS_PASSWORD_FILE: '/run/secrets/REDIS_PASSWORD'
+      FLOPPY_REDIS_MAXMEMORY: '0'
       # REDIS_PREFIX: "floppy:"
       URLS: "https://floppy.${APP_HOST}"
       SECRET_FILE: "/run/secrets/FLOPPY_DJANGO_SECRET"
