@@ -105,6 +105,7 @@ SECRETS_DIR="/run/secrets"
 
 | Name | Description | Example | Default |
 | :-- | :-- | :-- | :-- |
+| `FLOPPY_VERSION` | Tag for the [Floppy docker image](https://github.com/dannyvfilms/Floppy/pkgs/container/floppy). | `latest` | `release` |
 | `FLOPPY_NSFW` | Whether or not to include adult content in any Floppy media searches. | `True` | `False` |
 
 

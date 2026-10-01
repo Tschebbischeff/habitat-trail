@@ -27,7 +27,7 @@ The date used in the copyright notices in this file represents the year indicate
 ## Floppy
 
 * **Project:** https://dannyvfilms.github.io/floppy/
-* **Version:** Latest
+* **Version:** Latest Release
 * **In use since:** September 2026
 * **Source Code:** https://github.com/dannyvfilms/Floppy
 * **License:** [AGPL-3.0](https://github.com/dannyvfilms/Floppy/blob/latest/LICENSE)

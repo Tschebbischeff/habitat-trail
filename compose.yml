@@ -53,6 +53,8 @@ services:
   floppy:
     build:
       context: ./floppy
+      args:
+        FLOPPY_VERSION: "${FLOPPY_VERSION:?}"
     container_name: ${APP_NAME_HOST}_floppy
     restart: unless-stopped
     expose:
@@ -80,6 +82,7 @@ services:
       ACCOUNT_LOGOUT_REDIRECT_URL: "https://${APP_AUTH_HOST}/logout?rd=https%3A%2F%2Ffloppy.${APP_HOST}"
       SOCIALACCOUNT_ONLY: "True"
       REDIRECT_LOGIN_TO_SSO: "True"
+      DEMO_ACCOUNT_ENABLED: "False"
       OIDC_ADMIN_GROUPS: "[\"admins\",\"floppy_admins\"]"
       ADMIN_ENABLED: "True"
     secrets:
