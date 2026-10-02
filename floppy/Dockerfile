@@ -1,5 +1,5 @@
 ARG FLOPPY_VERSION
-FROM ghcr.io/dannyvfilms/floppy:${FLOPPY_VERSION}
+FROM ghcr.io/dannyvfilms/floppy:${FLOPPY_VERSION:?}
 
 RUN apk upgrade --no-cache -a; \
     apk add --no-cache patch dcron grep sqlite
