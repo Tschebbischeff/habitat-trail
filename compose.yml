@@ -24,8 +24,6 @@ secrets:
     file: ${SECRETS_DIR}/FLOPPY_OAUTH_CLIENT_SECRET
   FLOPPY_OAUTH_CLIENT_SECRET_HASHED_PBKDF2:
     file: ${SECRETS_DIR}/FLOPPY_OAUTH_CLIENT_SECRET_HASHED_PBKDF2
-  FLOPPY_STEAM_API_KEY:
-    file: ${SECRETS_DIR}/FLOPPY_STEAM_API_KEY
 
 
 services:
@@ -85,7 +83,6 @@ services:
       ACCOUNT_LOGOUT_REDIRECT_URL: "https://${APP_AUTH_HOST:-authelia.${APP_HOST}}/logout?rd=https%3A%2F%2Ffloppy.${APP_HOST}"
       SOCIALACCOUNT_ONLY: "True"
       REDIRECT_LOGIN_TO_SSO: "True"
-      STEAM_API_KEY_FILE: "/run/secrets/FLOPPY_STEAM_API_KEY"
       DEMO_ACCOUNT_ENABLED: "False"
       OIDC_ADMIN_GROUPS: "[\"admins\",\"floppy_admins\"]"
       ADMIN_ENABLED: "True"
@@ -94,7 +91,6 @@ services:
       - FLOPPY_DJANGO_SECRET
       - FLOPPY_OAUTH_CLIENT_ID
       - FLOPPY_OAUTH_CLIENT_SECRET
-      - FLOPPY_STEAM_API_KEY
     volumes:
       - floppy-db:/floppy/db
       - ${VOLUME_DIR}/floppy-backups:/floppy/backups
