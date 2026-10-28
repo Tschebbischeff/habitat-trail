@@ -1,9 +1,9 @@
---- settings.from.py	2026-09-25 02:47:37.270813712 +0200
-+++ settings.to.py	2026-09-25 02:47:50.200306617 +0200
-@@ -2018,3 +2018,6 @@
- REDIRECT_LOGIN_TO_SSO = config("REDIRECT_LOGIN_TO_SSO", default=False, cast=bool)
- 
- DEMO_ACCOUNT_ENABLED = config("DEMO_ACCOUNT_ENABLED", default=True, cast=bool)
+--- settings.from.py	2026-10-28 15:43:28.422572882 +0100
++++ settings.to.py	2026-10-28 15:43:24.223853677 +0100
+@@ -2281,3 +2281,6 @@
+ # this setting gates provisioning, not the account itself (see
+ # floppy_preflight's demo check for how to notice and retire it).
+ DEMO_ACCOUNT_ENABLED = config("DEMO_ACCOUNT_ENABLED", default=False, cast=bool)
 +
 +SOCIALACCOUNT_ADAPTER = config("SOCIALACCOUNT_ADAPTER", default="users.habitat_social_account_adapter.HabitatSocialAccountAdapter")
 +OIDC_ADMIN_GROUPS = config("OIDC_ADMIN_GROUPS", default="[]", cast=json.loads)
